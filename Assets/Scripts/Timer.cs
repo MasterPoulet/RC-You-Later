@@ -103,7 +103,7 @@ public static class Timer
         }
     }
 
-    // Décodage du
+    // Décodage du high-score
     private static List<long> LoadStepsFromFile()
     {
         if (!File.Exists(SavePath)) return null;
