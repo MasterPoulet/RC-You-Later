@@ -45,4 +45,11 @@ Et aussi rajoute à la fin de ce fichier **README.md** ce que tu a rajouté dans
 
 Il y a quelque assets dans le dossier des Models mais tu peux en importer d'autres (je te recommande à nouveau le site de [Kenney](https://kenney.nl/assets)).
 
+
 Ce que tu a rajouté dans le projet :
+
+- Un tout nouveau circuit avec de nombreux chemins annexes
+- Importation de nouveaux assets
+- Ajout de shader/deathzone/et plein d'autres petites babioles…
+
+Principalement du Level Design.
