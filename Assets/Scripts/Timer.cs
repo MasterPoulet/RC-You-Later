@@ -71,6 +71,7 @@ public static class Timer
             List<long> existingSteps = LoadStepsFromFile();
             if (existingSteps != null && existingSteps.Count > 0)
             {
+                // Sauvegarde seulement si le nouveau temps est meilleur que l'ancien
                 long oldFinalTime = existingSteps[existingSteps.Count - 1];
                 if (newFinalTime >= oldFinalTime)
                 {
@@ -79,14 +80,13 @@ public static class Timer
             }
         }
 
-        // Construire la chaîne : une valeur par ligne
         StringBuilder sb = new StringBuilder();
         foreach (long step in steps)
         {
             sb.AppendLine(step.ToString());
         }
 
-        // Mis en place du système de sauvegarde en base64 pour éviter les changement manuels du fichier de sauvegarde
+        // Pour pas que l'on puisse changer les valeurs de la save
         string plainText = sb.ToString();
         string encoded = Convert.ToBase64String(Encoding.UTF8.GetBytes(plainText));
 
@@ -103,6 +103,7 @@ public static class Timer
         }
     }
 
+    // Décodage du
     private static List<long> LoadStepsFromFile()
     {
         if (!File.Exists(SavePath)) return null;
@@ -111,7 +112,6 @@ public static class Timer
         {
             string encoded = File.ReadAllText(SavePath);
 
-            // Décodage depuis fichier qui est en Base64
             string plainText = Encoding.UTF8.GetString(Convert.FromBase64String(encoded));
 
             List<long> loaded = new List<long>();
@@ -131,7 +131,6 @@ public static class Timer
         }
         catch
         {
-            // Fichier corrompu ou invalide
             return null;
         }
     }
